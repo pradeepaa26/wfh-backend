@@ -10,18 +10,40 @@ public class UpdateDTO {
 	private boolean isLevelOverride;
 	private int available_for;
 	private String description;
-	/*
-	 * private String meta_key; private String meta_desc; private String created_by;
-	 * private String modified_by; private Date created_on; private Date
-	 * modified_on;
-	 */
-	private boolean isActive;
-	public int getId() {
-		return id;
+	 private String meta_key; 
+	 private String meta_desc; 
+	 private int enrollmentPoints;
+	 private int courseSubscribedVideo[];
+	 private int completionPoints;
+	 
+public int[] getCourseSubscribedVideo() {
+		return courseSubscribedVideo;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setCourseSubscribedVideo(int[] courseSubscribedVideo) {
+		this.courseSubscribedVideo = courseSubscribedVideo;
 	}
+public int getEnrollmentPoints() {
+		return enrollmentPoints;
+	}
+	public void setEnrollmentPoints(int enrollmentPoints) {
+		this.enrollmentPoints = enrollmentPoints;
+	}
+	public int getCompletionPoints() {
+		return completionPoints;
+	}
+	public void setCompletionPoints(int completionPoints) {
+		this.completionPoints = completionPoints;
+	}
+		//	 private String created_by;
+//	  private String modified_by; 
+//	 private Date created_on;
+//	 private Date modified_on;
+		public int getId() {
+			return id;
+		}
+		public void setId(int id) {
+			this.id = id;
+		}
 	public String getName() {
 		return name;
 	}
@@ -58,7 +80,6 @@ public class UpdateDTO {
 	public void setLevelOverride(boolean isLevelOverride) {
 		this.isLevelOverride = isLevelOverride;
 	}
-	
 	public int getAvailable_for() {
 		return available_for;
 	}
@@ -71,26 +92,19 @@ public class UpdateDTO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public String getMeta_key() {
+		return meta_key;
+	}
+	public void setMeta_key(String meta_key) {
+		this.meta_key = meta_key;
+	}
+	public String getMeta_desc() {
+		return meta_desc;
+	}
+	public void setMeta_desc(String meta_desc) {
+		this.meta_desc = meta_desc;
+	}
+	 
 
-	/*
-	 * public String getMeta_key() { return meta_key; } public void
-	 * setMeta_key(String meta_key) { this.meta_key = meta_key; } public String
-	 * getMeta_desc() { return meta_desc; } public void setMeta_desc(String
-	 * meta_desc) { this.meta_desc = meta_desc; } public String getCreated_by() {
-	 * return created_by; } public void setCreated_by(String created_by) {
-	 * this.created_by = created_by; } public String getModified_by() { return
-	 * modified_by; } public void setModified_by(String modified_by) {
-	 * this.modified_by = modified_by; } public Date getCreated_on() { return
-	 * created_on; } public void setCreated_on(Date created_on) { this.created_on =
-	 * created_on; } public Date getModified_on() { return modified_on; } public
-	 * void setModified_on(Date modified_on) { this.modified_on = modified_on; }
-	 */
-	public boolean isActive() {
-		return isActive;
-	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-	
 	
 }

@@ -1,5 +1,6 @@
 package com.courses.module.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -22,7 +23,8 @@ public class CourseService {
 	Course course=new Course();
 	Levels level=new Levels();
 	Categories category=new Categories();
-	CourseSubscribedVideos videos= new CourseSubscribedVideos();
+	CourseSubscribedVideos subscribedvideos= new CourseSubscribedVideos();
+	Videos videos=new Videos();
 	@Transactional
 	public List<Course> view() {
 		return dao.views();
@@ -45,12 +47,35 @@ public List<Categories> viewcategory() {
 		course.setId(dto.getId());
 		course.setName(dto.getName());
 		level.setId(dto.getLevel_id());
+		course.setLevels(level);
 		category.setId(dto.getCategory_id());
+		course.setCategories(category);
 		course.setSlug(dto.getSlug());
 		course.setTag(dto.getTag());
 		course.setLevelOverride(dto.isLevelOverride());
 		course.setAvailable_for(dto.getAvailable_for());
 		course.setMeta_desc(dto.getDescription());
+		course.setMeta_key(dto.getMeta_key());
+		course.setEnrollmentPoints(dto.getEnrollmentPoints());
+		course.setCompletionPoints(dto.getCompletionPoints());
+		course.setDescription(dto.getDescription());
+		
+		
+		List<CourseSubscribedVideos> coursesubscribedvideo=new ArrayList<CourseSubscribedVideos>();
+		for(int i=0;i<dto.getCourseSubscribedVideo().length;i++)
+		{
+		videos.setId(dto.getCourseSubscribedVideo()[i]);
+		subscribedvideos.setVideos(videos);
+		subscribedvideos.setCourse(course);
+		coursesubscribedvideo.add(subscribedvideos);
+		course.setCourseSubscribedVideoObj(coursesubscribedvideo);
+		}
+		coursesubscribedvideo.add(subscribedvideos);
+		
+		
+		
+		
+		
 		if(dao.isIdExists(dto.getId()))
 		{
 		 return dao.update(course);
